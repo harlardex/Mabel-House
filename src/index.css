@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+  --color-primary: #f4f4f4;
+  --color-secondary: #FBEBB5;
+  --color-accent: #f4f4f4;
+  --color-primary-text: #d08700;
+  --color-secondary-text: #9f9f9f;
+
+  --font-main: "Poppins", sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
