@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useProducts } from "../hooks/useProducts";
 import Loader from "../components/ui/Loader";
+import ProductCard from "../components/products/ProductCard";
 import ProductGrid from "../components/products/ProductGrid";
 import instagramBg from "../assets/instagram-bg.png";
 
@@ -89,9 +90,17 @@ function Home() {
                     Find a bright ideal to suit your taste with our great selection of suspension, floor, and table lights.
                 </p>
 
-                <div className="my-8">
-                    <ProductGrid products={products.slice(0, 4)} />
+                <div className="my-8 w-full overflow-x-auto">
+                    <div className="grid gap-45 justify-around grid-cols-4">
+                        {products.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                            />
+                        )).slice(0, 4)}
+                    </div>
                 </div>
+
 
                 <button>
                     <Link to="/shop" className="border-b text-xl sm:text-2xl pb-2">
