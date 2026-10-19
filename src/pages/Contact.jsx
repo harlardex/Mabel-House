@@ -16,7 +16,7 @@ function Contact() {
         style={{ backgroundImage: `url(${banner})` }}
       >
         <img src={logo} alt="Logo" />
-        <h2 className="text-5xl font-medium -translate-y-2">Contact</h2>
+        <h2 className="text-3xl sm:text-5xl font-medium -translate-y-2">Contact</h2>
         <p>
           <Link to="/" className="font-medium">
             Home

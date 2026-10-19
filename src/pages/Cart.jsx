@@ -40,7 +40,7 @@ function Cart() {
             >
                 <img src={logo} alt="Logo" />
 
-                <h2 className="text-5xl font-medium -translate-y-2">
+                <h2 className="text-3xl sm:text-5xl font-medium -translate-y-2">
                     Cart
                 </h2>
 

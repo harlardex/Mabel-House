@@ -66,7 +66,7 @@ function Shop() {
         style={{ backgroundImage: `url(${banner})` }}
       >
         <img src={logo} alt="Logo" />
-        <h2 className="text-5xl font-medium -translate-y-2">Shop</h2>
+        <h2 className="text-3xl sm:text-5xl font-medium -translate-y-2">Shop</h2>
         <p>
           <Link to="/" className="font-medium">
             Home
@@ -121,7 +121,7 @@ function Shop() {
             </select>
           </div>
 
-          <div className="flex-1">
+          <div className="hidden sm:flex flex-1">
             <p className="whitespace-nowrap w-full">
               Showing {filteredProduct === 0 ? 0 : firstIndex + 1} -{" "}
               {Math.min(firstIndex + productPerPage, filteredProduct.length)} of
@@ -135,8 +135,17 @@ function Shop() {
       <main className="p-10">
         <ProductGrid products={currentProduct} />
 
+        <div className="sm:hidden">
+            <p className="whitespace-nowrap w-full">
+              Showing {filteredProduct === 0 ? 0 : firstIndex + 1} -{" "}
+              {Math.min(firstIndex + productPerPage, filteredProduct.length)} of
+              &nbsp;
+              {filteredProduct.length} results
+            </p>
+          </div>
+
         {filteredProduct.length > 0 && (
-          <div className="flex justify-center items-center gap-8 my-10 text-xl *:py-4 *:px-6 *:bg-[#fff9e5] *:rounded-xl">
+          <div className="flex justify-center items-center gap-8 my-5 sm:my-10 sm:text-xl *:py-2 *:px-2 sm:*:py-4 sm:*:px-6 *:bg-[#fff9e5] *:rounded-xl">
             <button
               disabled={currentPage === 1}
               onClick={() => setCurrentPage(currentPage - 1)}

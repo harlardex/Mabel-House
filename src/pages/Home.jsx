@@ -102,8 +102,8 @@ function Home() {
 
             {/* New Arrivals */}
             {newestProduct && (
-                <div className="flex flex-col md:flex-row justify-center items-center px-5 py-10 sm:p-8 md:p-10 lg:p-15 min-h-[500px] md:min-h-[600px] lg:h-180 bg-[#fff9e5] gap-6 md:gap-4">
-                    <div className="w-full md:flex-[2] pointer-events-none">
+                <div className="flex flex-col md:flex-row justify-center items-center px-5 py-10 sm:p-8 md:p-10 lg:p-15 min-h-125 md:min-h-150 lg:h-180 bg-[#fff9e5] gap-6 md:gap-4">
+                    <div className="w-full md:flex-2 pointer-events-none">
                         <img
                             src={newestProduct.images?.[1]}
                             alt={newestProduct.name}
@@ -148,7 +148,7 @@ function Home() {
 
             {/* Instagram */}
             <section
-                className="flex flex-col items-center justify-center px-4 py-12 sm:py-16 md:py-20 min-h-[280px] sm:min-h-[350px] md:min-h-[440px] text-center bg-cover bg-center"
+                className="flex flex-col items-center justify-center px-4 py-12 sm:py-16 md:py-20 min-h-70 sm:min-h-87.5 md:min-h-110 text-center bg-cover bg-center"
                 style={{ backgroundImage: `url(${instagramBg})` }}
             >
                 <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">

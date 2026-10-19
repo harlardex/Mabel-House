@@ -59,14 +59,14 @@ function ProductDetails() {
         <p className="border-l pl-3">{product.name}</p>
       </nav>
 
-      <main className="flex flex-col sm:flex-row gap-10 p-10 border-b pb-8">
-        <aside className="flex gap-5 sm:w-[50%]">
+      <main className="flex flex-col sm:flex-row gap-10 p-5 sm:p-10 border-b pb-8">
+        <aside className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-5 sm:w-[50%]">
           <div>
             {product.images?.map((image, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedImage(index)}
-                className={`w-20 h-20 border flex flex-col mb-5 bg-secondary rounded cursor-pointer ${selectedImage === index ? "border-black" : "border-gray-200"
+                className={`w-20 h-20 border sm:flex mr-2 sm:mb-5 bg-secondary rounded cursor-pointer ${selectedImage === index ? "border-black" : "border-gray-200"
                   }`}
               >
                 <img
@@ -87,7 +87,7 @@ function ProductDetails() {
         </aside>
 
         <aside className="sm:w-[35%] flex flex-col gap-5">
-          <h2 className="text-4xl font-semibold">{product.name}</h2>
+          <h2 className="text-2xl sm:text-4xl font-semibold">{product.name}</h2>
           <div className="flex gap-4 items-end">
             {product?.compareAtPrice != null && (
               <span className="text-gray-500 line-through">
