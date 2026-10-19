@@ -1,7 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
-import { Search, ShoppingCart, Heart } from "lucide-react";
+import { Link, useLocation, NavLink } from "react-router-dom";
+import { Search, ShoppingCart, Heart, Home, Store, Phone } from "lucide-react";
 import { useCart } from "../../hooks/useCart";
 import { useAuth } from "../../hooks/useAuth";
+import logo from "../../assets/logo.png"
 import ProfileButton from "../ui/ProfileButton";
 
 
@@ -13,33 +14,80 @@ function Navbar() {
     const isHomePage = pathname === "/";
     const { cartCount, setIsCartOpen } = useCart();
 
-    return(
-        <nav className={`top-0 w-full backdrop-blur-lg z-10 flex justify-end items-center gap-20 p-4 px-15 *:text-lg ${isHomePage ? "fixed" : "sticky"}`}>
-            <div className=" absolute left-1/2 -translate-x-1/2 flex gap-10 ">
-                <Link to="/">Home</Link>
-                <Link to="/shop">Shop</Link>
-                {/* <Link to="/about">About</Link> */}
-                <Link to="/contact">Contact</Link>
-            </div>
-            <div className=" flex gap-8 *:cursor-pointer">
-                <ProfileButton />
-                <Search />
-                <Heart />
-                <div className="relative">
-                    <ShoppingCart onClick={() => setIsCartOpen(true)} />
-                    { cartCount > 0 && (
-                        <span className="absolute text-sm -top-2 -right-2 text-white flex items-center justify-center h-4 w-4 bg-red-400 rounded-full">
-                            {cartCount}
-                        </span>
-                    ) }
+    return (
+        <>
+
+
+            {/* Mobile Navbar */}
+            <nav className="sm:hidden">
+                <div className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-3 bg-white/80 backdrop-blur-lg">
+                    <Link to="/" className="flex items-center">
+                        <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
+                    </Link>
+
+                    <div className="relative cursor-pointer">
+                        <ShoppingCart onClick={() => setIsCartOpen(true)} />
+                        {cartCount > 0 && (
+                            <span className="absolute text-xs -top-2 -right-2 text-white flex items-center justify-center h-4 w-4 bg-red-400 rounded-full">
+                                {cartCount}
+                            </span>
+                        )}
+                    </div>
                 </div>
-            </div>
-            {user?.role === "ADMIN" && (
-                <Link to="/admin" className="absolute left-4 border p-1 rounded-md cursor-pointer">
-                    Admin Dashboard
-                </Link>
-            )}
-        </nav>
+
+                {/* Bottom Navigation */}
+                <div className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-white/90 backdrop-blur-lg border-t shadow-lg">
+                    <NavLink to="/" end className={({isActive}) => `flex flex-col items-center gap-1 text-xs ${isActive ? "text-primary-text" : "text-black"}`}>
+                        <Home size={22} />
+                        <span>Home</span>
+                    </NavLink>
+
+                    <NavLink to="/shop" className={({isActive}) => `flex flex-col items-center gap-1 text-xs ${isActive ? "text-primary-text" : "text-black"}`}>
+                        <Store size={22} />
+                        <span>Shop</span>
+                    </NavLink>
+
+                    <NavLink to="/contact" className={({isActive}) => `flex flex-col items-center gap-1 text-xs ${isActive ? "text-primary-text" : "text-black"}`}>
+                        <Phone size={22} />
+                        <span>Contact</span>
+                    </NavLink>
+
+                    <div className="flex flex-col items-center gap-1 text-xs">
+                        <ProfileButton />
+                        <span>Profile</span>
+                    </div>
+                </div>
+            </nav>
+
+
+
+            <nav className={`hidden top-0 w-full backdrop-blur-lg z-10 sm:flex justify-end items-center gap-20 p-4 px-15 *:text-lg ${isHomePage ? "fixed" : "sticky"}`}>
+                <div className=" absolute left-4 md:left-1/2 md:-translate-x-1/2 flex gap-10 ">
+                    <NavLink className={({isActive}) => `${isActive ? "text-primary-text" : "text-black"}`} to="/">Home</NavLink>
+                    <NavLink className={({isActive}) => `${isActive ? "text-primary-text" : "text-black"}`} to="/shop">Shop</NavLink>
+                    {/* <NavLink className={({isActive}) => `${isActive ? "text-primary-text" : "text-black"}`} to="/about">About</NavLink> */}
+                    <NavLink className={({isActive}) => `${isActive ? "text-primary-text" : "text-black"}`} to="/contact">Contact</NavLink>
+                </div>
+                <div className=" flex gap-8 *:cursor-pointer">
+                    <ProfileButton />
+                    <Search />
+                    <Heart />
+                    <div className="relative">
+                        <ShoppingCart onClick={() => setIsCartOpen(true)} />
+                        {cartCount > 0 && (
+                            <span className="absolute text-sm -top-2 -right-2 text-white flex items-center justify-center h-4 w-4 bg-red-400 rounded-full">
+                                {cartCount}
+                            </span>
+                        )}
+                    </div>
+                </div>
+                {user?.role === "ADMIN" && (
+                    <Link to="/admin" className="absolute top-13 md:top-3 left-4 border p-1 rounded-md cursor-pointer">
+                        Admin Dashboard
+                    </Link>
+                )}
+            </nav>
+        </>
     )
 }
 

@@ -52,7 +52,7 @@ function Cart() {
                 </p>
             </header>
 
-            <main className="flex p-15 gap-10">
+            <main className="flex flex-col sm:flex-row p-5 md:p-15 gap-10">
                 <aside className="flex-2 overflow-x-auto">
 
                     <table className="w-full min-w-200">
@@ -126,7 +126,7 @@ function Cart() {
 
                 </aside>
 
-                <aside className="flex flex-col justify-around w-[25%] min-h-50 bg-secondary rounded text-center">
+                <aside className="flex flex-col justify-around sm:w-[25%] min-h-50 bg-secondary rounded text-center">
                     <h2 className="text-3xl font-medium">Cart Totals</h2>
                     <div className="flex justify-around">
                         <p>Total</p>

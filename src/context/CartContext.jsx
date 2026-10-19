@@ -134,7 +134,7 @@ export const CartProvider = ({ children }) => {
     // Get total price 
     const cartTotal = cart.items.reduce(
         (total, item) => total + item.unitPrice * item.quantity, 0
-    )
+    ).toFixed(2);
 
     useEffect(() => {
         getCart();

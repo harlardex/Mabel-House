@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { createPortal } from "react-dom";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
@@ -10,10 +10,10 @@ const ProfileButton = () => {
 
     if (!user) {
         return (
-            <Link to="/account"
-                  className="flex items-center gap-1">
+            <NavLink to="/account"
+                  className={({isActive}) => `flex items-center gap-1 ${isActive ? "text-primary-text" : "text-black"}`}>
                 <CircleUser />!
-            </Link>
+            </NavLink>
         );
     }
 

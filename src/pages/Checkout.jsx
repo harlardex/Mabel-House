@@ -30,7 +30,7 @@ function Checkout() {
                 </p>
             </header>
 
-            <main className="flex gap-15 p-25">
+            <main className="flex flex-col-reverse sm:flex-row gap-15 p-8 md:p-25">
                 <aside className="flex-1">
                     <form>
                         <h2 className="text-4xl font-medium mb-5">Billing details</h2>

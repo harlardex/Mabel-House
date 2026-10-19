@@ -77,7 +77,7 @@ const CartModal = () => {
                         <span>SubTotal</span>
 
                         <span className="text-primary-text font-medium text-xl">
-                            ${cartTotal.toFixed(2)}
+                            ${cartTotal}
                         </span>
                     </div>
 

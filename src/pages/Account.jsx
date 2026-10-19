@@ -102,7 +102,7 @@ function Account() {
 
         {/* ================= LOGIN ================= */}
         {mode === "login" && (
-          <div className="w-[40%] mx-auto">
+          <div className="w-[75%] md:w-[40%] mx-auto">
             <form
               className="flex flex-col gap-5"
               onSubmit={handleSubmit}
@@ -174,7 +174,7 @@ function Account() {
 
         {/* ================= REGISTER ================= */}
         {mode === "register" && (
-          <div className="w-[40%] mx-auto">
+          <div className="w-[75%] md:ww-[40%] mx-auto">
             <form
               className="flex flex-col gap-5"
               onSubmit={handleSubmit}

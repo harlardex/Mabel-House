@@ -26,7 +26,7 @@ function Contact() {
       </header>
 
       <div>
-        <main className="text-center mx-auto my-15 w-[40%]">
+        <main className="text-center mx-auto my-15 w-[80%] sm:w-[40%]">
           <h2 className="font-medium text-4xl mb-4">Get In Touch With Us</h2>
           <p className="text-secondary-text">
             For More Information About Our Product And Services. Please Feel
@@ -35,7 +35,7 @@ function Contact() {
           </p>
         </main>
 
-        <div className="flex justify-center gap-20 my-15">
+        <div className="flex flex-col-reverse sm:flex-row justify-center items-center gap-20 my-15">
           <aside className="flex flex-col gap-10">
             <div>
               <h2 className="flex gap-4 items-center text-2xl font-medium mb-2">
@@ -72,7 +72,7 @@ function Contact() {
             <form action="" className="flex flex-col gap-3">
               <label htmlFor="name">Your Name</label>
               <input
-                className="border border-secondary-text p-3 w-100 mb-5 rounded"
+                className="border border-secondary-text p-3 w-75 sm:w-100 mb-5 rounded"
                 type="text" required
                 name="name"
                 id="name"
@@ -81,7 +81,7 @@ function Contact() {
 
               <label htmlFor="email">Email address</label>
               <input
-                className="border border-secondary-text p-3 w-100 mb-5 rounded"
+                className="border border-secondary-text p-3 w-75 sm:w-100 mb-5 rounded"
                 type="email" required
                 name="email"
                 id="email"
@@ -90,7 +90,7 @@ function Contact() {
 
               <label htmlFor="subject">Subject</label>
               <input
-                className="border border-secondary-text p-3 w-100 mb-5 rounded"
+                className="border border-secondary-text p-3 w-75 sm:w-100 mb-5 rounded"
                 type="text"
                 name="subject"
                 id="sunject"
@@ -99,7 +99,7 @@ function Contact() {
 
               <label htmlFor="message">Message</label>
               <textarea
-                className="border border-secondary-text p-3 w-100 mb-5 rounded"
+                className="border border-secondary-text p-3 w-75 sm:w-100 mb-5 rounded"
                 name="message" required
                 id="messaage"
                 placeholder="Hi! I'd like to ask about..."

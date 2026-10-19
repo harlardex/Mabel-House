@@ -48,7 +48,7 @@ function ProductDetails() {
 
   return (
     <>
-      <nav className="flex gap-5 p-8">
+      <nav className="flex mt-10 gap-5 p-8">
         <Link to="/" className="text-secondary-text">
           Home
         </Link>
@@ -59,8 +59,8 @@ function ProductDetails() {
         <p className="border-l pl-3">{product.name}</p>
       </nav>
 
-      <main className="flex gap-10 p-10 border-b pb-8">
-        <aside className="flex gap-5 w-[50%]">
+      <main className="flex flex-col sm:flex-row gap-10 p-10 border-b pb-8">
+        <aside className="flex gap-5 sm:w-[50%]">
           <div>
             {product.images?.map((image, index) => (
               <button
@@ -86,7 +86,7 @@ function ProductDetails() {
           </div>
         </aside>
 
-        <aside className="w-[35%] flex flex-col gap-5">
+        <aside className="sm:w-[35%] flex flex-col gap-5">
           <h2 className="text-4xl font-semibold">{product.name}</h2>
           <div className="flex gap-4 items-end">
             {product?.compareAtPrice != null && (
@@ -152,7 +152,6 @@ function ProductDetails() {
               </button>
             </div>
             <button className="border border-gray-300 px-4 py-2 text-lg rounded-lg cursor-pointer hover:bg-gray-100 transition"
-              // disabled={variants.length > 0 && !selectedVariant}
               onClick={handleAddToCart}>
               Add to Cart
             </button>

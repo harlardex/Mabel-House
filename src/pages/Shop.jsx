@@ -75,10 +75,22 @@ function Shop() {
         </p>
       </header>
 
-      <section className="flex justify-between item-center py-8 px-10 my-8 bg-primary text-lg">
-        <div className="flex gap-10 item-center">
-          <div className="flex gap-5 items-center">
+      <section className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-8 py-7 px-4 my-8 bg-primary text-lg">
+
+        <div className="flex-1">
+          <input type="text"
+            placeholder="Search products"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="border py-1 px-2 rounded-lg w-full"
+          />
+        </div>
+
+        <div className="flex-2 flex gap-4 lg:gap-8 justify-around items-center">
+          
+          <div className="flex-1">
             <select
+              className="border p-1 w-full rounded"
               value={selectedCategory}
               onChange={(e) => {
                 setSelectedCategory(e.target.value);
@@ -90,43 +102,33 @@ function Shop() {
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>{category.name}</option>
               ))}
-              
+
             </select>
-            {/* <p className="flex gap-3"><SlidersHorizontal />  Filter</p> */}
-            {/* <LayoutGrid />
-                        <List /> */}
           </div>
-          <div className=" flex items-center border-l ">
-            <p className="ml-5">
+
+          <div className="flex-1">
+            <select
+              className="border p-1 w-full rounded"
+              value={sort}
+              onChange={(e) => {
+                setSort(e.target.value);
+                setCurrentPage(1);
+              }}
+            >
+              <option value="default">Price</option>
+              <option value="low">Low to High</option>
+              <option value="high">High to low</option>
+            </select>
+          </div>
+
+          <div className="flex-1">
+            <p className="whitespace-nowrap w-full">
               Showing {filteredProduct === 0 ? 0 : firstIndex + 1} -{" "}
               {Math.min(firstIndex + productPerPage, filteredProduct.length)} of
               &nbsp;
               {filteredProduct.length} results
             </p>
           </div>
-        </div>
-        <div className="w-[30%]">
-          <input type="text"
-                 placeholder="Search products"
-                 value={search} 
-                 onChange={(e) => setSearch(e.target.value)}
-                 className="border py-1 px-2 rounded-lg w-full" 
-            />
-        </div>
-        <div className="flex gap-5 items-center">
-          <p>Sort By</p>
-          <select
-            value={sort}
-            onChange={(e) => {
-              setSort(e.target.value);
-              setCurrentPage(1);
-            }}
-          >
-            <option value="default">Default</option>
-            <option value="low">Low to High</option>
-            <option value="high">High to low</option>
-            <option value=""></option>
-          </select>
         </div>
       </section>
 
