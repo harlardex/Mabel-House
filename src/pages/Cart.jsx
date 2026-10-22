@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
+import { useProducts } from "../hooks/useProducts";
 import { Trash2, Plus, Minus } from "lucide-react";
 import banner from "../assets/banner.png";
 import logo from "../assets/logo.png";
 
 function Cart() {
 
+    const { products } = useProducts();
     const {
         cart,
         loading,
@@ -14,16 +16,31 @@ function Cart() {
         cartTotal,
     } = useCart();
 
-    if(loading){
-        return(
+    const getAvailableQuantity = (item) => {
+        const product = products.find(
+            (product) => product.id === item.productId
+        );
+
+        if (!product) return 0;
+
+        const inventory = product.inventory?.find(
+            (stock) =>
+                stock.variantId === (item.variantId ?? null)
+        );
+
+        return inventory?.availableQuantity ?? 0;
+    };
+
+    if (loading) {
+        return (
             <div className="flex justify center py-20">
                 <p>Loading cart...</p>
             </div>
         );
     }
 
-    if(cartTotal.length === 0) {
-        return(
+    if (!cart.items?.length) {
+        return (
             <div className="text-center py-20">
                 <h1 className="text-3xl font-medium">Your cart is empty</h1>
                 <p>You haven't added anything to your cart yet.</p>
@@ -66,61 +83,70 @@ function Cart() {
                             </tr>
                         </thead>
                         <tbody>
-                            {cart.items.map((item, index) => (
-                                <tr key={item.cartItemId}
-                                    className="border-b *:pl-4">
-                                    <td>
-                                        <div className="flex gap-2 items-center">
-                                            <div className="h-20 w-20 flex items-center rounded">
-                                                <img src={item?.image} alt={item.productName}
-                                                className="h-17 w-18 object-cover bg-secondary" />
+                            {cart.items.map((item, index) => {
+                                const availableQuantity = getAvailableQuantity(item);
+
+                                return (
+                                    <tr key={item.cartItemId}
+                                        className="border-b *:pl-4">
+                                        <td>
+                                            <div className="flex gap-2 items-center">
+                                                <div className="h-20 w-20 flex items-center rounded">
+                                                    <img src={item?.image} alt={item.productName}
+                                                        className="h-17 w-18 object-cover bg-secondary" />
+                                                </div>
+                                                <div>
+                                                    <p>{item.productName} <br />
+                                                        {item?.variantLabel && (
+                                                            <span>
+                                                                ({item.variantLabel.split("/")[0].trim()})
+                                                            </span>
+                                                        )}
+                                                    </p>
+
+                                                </div>
                                             </div>
-                                            <div>
-                                                <p>{item.productName} <br />
-                                                    {item?.variantLabel && (
-                                                        <span>
-                                                            ({item.variantLabel.split("/")[0].trim()})
-                                                        </span>
-                                                    )}
-                                                </p>
+                                        </td>
 
+                                        <td>
+                                            ${item.unitPrice.toLocaleString()}
+                                        </td>
+
+                                        <td className="items-center">
+                                            <div className="flex justify-around rounded-lg py-1 border w-[70%] *:cursor-pointer">
+                                                <button onClick={() => {
+                                                    if (item.quantity > 1) {
+                                                        updateCartQuantity(index, item.quantity - 1);
+                                                    }
+                                                }} disabled={item.quantity <= 1}
+                                                    className="disabled:opacity-40 disabled:cursor-not-allowed"
+                                                ><Minus /></button>
+
+                                                <span>{item.quantity}</span>
+
+                                                <button onClick={() => {
+                                                    if (item.quantity < availableQuantity) {
+                                                        updateCartQuantity(index, item.quantity + 1);
+                                                    }
+                                                }}
+                                                    disabled={item.quantity >= availableQuantity}
+                                                    className="disabled:opacity-40 disabled:cursor-not-allowed"
+                                                ><Plus /></button>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td>
-                                        ${item.unitPrice.toLocaleString()}
-                                    </td>
+                                        <td>
+                                            $ {(item.unitPrice * item.quantity).toLocaleString()}
+                                        </td>
 
-                                    <td className="items-center">
-                                        <div className="flex justify-around rounded-lg py-1 border w-[70%] *:cursor-pointer">
+                                        <td>
                                             <button onClick={() => {
-                                                if(item.quantity > 1) {
-                                                    updateCartQuantity(index, item.quantity - 1);
-                                                }
-                                            }}><Minus /></button>
-
-                                            <span>{item.quantity}</span>
-
-                                            <button onClick={() => {
-                                                if(item.quantity > 1) {
-                                                    updateCartQuantity(index, item.quantity + 1);
-                                                }
-                                            }}><Plus /></button>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        $ {(item.unitPrice * item.quantity).toLocaleString()}
-                                    </td>
-
-                                    <td>
-                                        <button onClick={() => {
-                                            removeFromCart(index)
-                                        }} className="cursor-pointer"><Trash2 /></button>
-                                    </td>
-                                </tr>
-                            ))}
+                                                removeFromCart(index)
+                                            }} className="cursor-pointer"><Trash2 /></button>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
 

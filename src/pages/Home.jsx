@@ -21,9 +21,9 @@ function Home() {
 
         <>
             {/* Hero Section */}
-            <header className="flex flex-col md:flex-row bg-secondary justify-center items-center min-h-screen px-5 sm:px-8 md:px-10 lg:px-15 py-10 md:py-0 gap-6 md:gap-4">
+            <header className="flex flex-col md:flex-row bg-secondary justify-center items-center mt-10 sm:mt-0 h-4/5 sm:min-h-screen px-5 sm:px-8 md:px-10 lg:px-15 py-10 md:py-0 gap-6 md:gap-4">
                 <div className="w-full md:flex-1 translate-y-0 translate-x-0 md:translate-y-10 md:translate-x-5 lg:translate-x-10 text-center md:text-left">
-                    <h2 className="text-3xl sm:text-4xl lg:text-6xl mb-6 md:mb-8">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-6 md:mb-8">
                         {products[0]?.name}
                     </h2>
                     <button>
@@ -33,11 +33,11 @@ function Home() {
                     </button>
                 </div>
 
-                <div className="w-full md:flex-1">
+                <div className="w-full md:flex-2">
                     <img
                         src={products[0]?.images?.[0]}
                         alt={products[0]?.name}
-                        className="w-full h-64 sm:h-80 md:h-96 lg:h-120 object-contain"
+                        className="w-full h-64 sm:h-80 md:h-96 lg:h-150 object-cover"
                     />
                 </div>
             </header>
@@ -90,7 +90,7 @@ function Home() {
                     Find a bright ideal to suit your taste with our great selection of suspension, floor, and table lights.
                 </p>
 
-                <div className="my-8 w-full overflow-x-auto">
+                <div className="my-8 w-full overflow-x-auto sm:overflow-hidden">
                     <div className="grid gap-45 justify-around grid-cols-4">
                         {products.map((product) => (
                             <ProductCard
@@ -116,7 +116,7 @@ function Home() {
                         <img
                             src={newestProduct.images?.[1]}
                             alt={newestProduct.name}
-                            className="w-full h-64 sm:h-80 md:h-96 lg:h-100 object-contain md:-translate-y-5 lg:-translate-y-15"
+                            className="w-full h-64 sm:h-80 md:h-full object-cover md:-translate-y-5 lg:-translate-y-15"
                         />
                     </div>
 

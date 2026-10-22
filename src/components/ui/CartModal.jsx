@@ -14,7 +14,7 @@ const CartModal = () => {
     if (!isCartOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-50 bg-black/40"
+        <div className="fixed inset-0 z-200 bg-black/40"
               onClick={() => setIsCartOpen(false)} >
             <div className="absolute right-0 top-0 h-3/4 w-full max-w-md bg-white p-6"
                  onClick={(e) => e.stopPropagation()}>

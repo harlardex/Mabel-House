@@ -1,5 +1,5 @@
 import { Link, useLocation, NavLink } from "react-router-dom";
-import { Search, ShoppingCart, Heart, Home, Store, Phone } from "lucide-react";
+import { Search, ShoppingCart, Home, Store, Phone, ShoppingBag } from "lucide-react";
 import { useCart } from "../../hooks/useCart";
 import { useAuth } from "../../hooks/useAuth";
 import logo from "../../assets/logo.png"
@@ -52,6 +52,11 @@ function Navbar() {
                         <span>Contact</span>
                     </NavLink>
 
+                    <NavLink to="/orders" className={({isActive}) => `flex flex-col items-center gap-1 text-xs ${isActive ? "text-primary-text" : "text-black"}`}>
+                        <ShoppingBag size={22} />
+                        <span>Orders</span>
+                    </NavLink>
+
                     <div className="flex flex-col items-center gap-1 text-xs">
                         <ProfileButton />
                         <span>Profile</span>
@@ -65,13 +70,12 @@ function Navbar() {
                 <div className=" absolute left-4 md:left-1/2 md:-translate-x-1/2 flex gap-10 ">
                     <NavLink className={({isActive}) => `${isActive ? "text-primary-text" : "text-black"}`} to="/">Home</NavLink>
                     <NavLink className={({isActive}) => `${isActive ? "text-primary-text" : "text-black"}`} to="/shop">Shop</NavLink>
-                    {/* <NavLink className={({isActive}) => `${isActive ? "text-primary-text" : "text-black"}`} to="/about">About</NavLink> */}
                     <NavLink className={({isActive}) => `${isActive ? "text-primary-text" : "text-black"}`} to="/contact">Contact</NavLink>
                 </div>
                 <div className=" flex gap-8 *:cursor-pointer">
                     <ProfileButton />
                     <Search />
-                    <Heart />
+                    <NavLink className={({isActive}) => `${isActive ? "text-primary-text" : "text-black"}`} to="/orders"><ShoppingBag /></NavLink>
                     <div className="relative">
                         <ShoppingCart onClick={() => setIsCartOpen(true)} />
                         {cartCount > 0 && (

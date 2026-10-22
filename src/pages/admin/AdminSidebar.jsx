@@ -36,12 +36,6 @@ const menuItems = [
     path: "/admin/users",
     icon: Users,
   },
-  
-  {
-    name: "Settings",
-    path: "/admin/settings",
-    icon: Settings,
-  },
 ];
 
 const AdminSidebar = () => {

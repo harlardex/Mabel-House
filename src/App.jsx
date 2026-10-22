@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import Account from "./pages/Account";
 import Checkout from "./pages/Checkout";
 import Cart from "./pages/Cart";
+import Orders from "./pages/Orders";
 import CartModal from "./components/ui/CartModal";
 import AdminRoute from "./components/routes/AdminRoute";
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -21,6 +22,7 @@ import AdminEditProduct from "./pages/admin/AdminEditProduct";
 import AdminCategories from "./pages/admin/AdminCategories";
 import AdminCreateCategory from "./pages/admin/AdminCreateCategory";
 import AdminEditCategory from "./pages/admin/AdminEditCategory";
+import AdminOrders from "./pages/admin/AdminOrders";
 
 function App() {
 
@@ -36,6 +38,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/account" element={<Account />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/orders" element={<Orders />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/product/:id" element={<ProductDetails />} />
 
@@ -49,6 +52,7 @@ function App() {
                 <Route path="/admin/categories" element={<AdminCategories />} />
                 <Route path="/admin/categories/new" element={<AdminCreateCategory />} />
                 <Route path="/admin/categories/edit/:id" element={<AdminEditCategory />} />
+                <Route path="/admin/orders" element={<AdminOrders />} />
               </Route>
             </Route>
           </Routes>
