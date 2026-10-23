@@ -21,7 +21,7 @@ function Home() {
 
         <>
             {/* Hero Section */}
-            <header className="flex flex-col md:flex-row bg-secondary justify-center items-center mt-10 sm:mt-0 h-4/5 sm:min-h-screen px-5 sm:px-8 md:px-10 lg:px-15 py-10 md:py-0 gap-6 md:gap-4">
+            <header className="flex flex-col md:flex-row bg-secondary justify-center items-center mt-10 sm:mt-0 h-[80vh] sm:min-h-screen px-5 sm:px-8 md:px-10 lg:px-15 py-10 md:py-0 gap-6 md:gap-4">
                 <div className="w-full md:flex-1 translate-y-0 translate-x-0 md:translate-y-10 md:translate-x-5 lg:translate-x-10 text-center md:text-left">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-6 md:mb-8">
                         {products[0]?.name}
@@ -43,14 +43,14 @@ function Home() {
             </header>
 
             {/* Featured Products */}
-            <section className="grid grid-cols-2 justify-center items-start p-3 sm:p-6 md:p-10 lg:p-15 gap-3 sm:gap-6 md:gap-10 bg-accent">
-                <div className="min-w-0">
+            <section className="grid grid-cols-2 justify-center items-start p-5 sm:p-6 md:p-10 lg:p-15 gap-5 sm:gap-6 md:gap-10 bg-accent">
+                <div className="min-w-0 flex flex-col gap-5 h-full">
                     <img
                         src={products[0]?.images?.[0]}
                         alt={products[0]?.name}
                         className="w-full h-36 sm:h-52 md:h-64 lg:h-70 object-contain"
                     />
-                    <div className="mt-2 sm:mt-4 md:translate-x-5 lg:translate-x-15">
+                    <div className="mt-auto sm:mt-4 md:translate-x-5 lg:translate-x-15">
                         <h3 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-4">
                             {products[0]?.name}
                         </h3>
@@ -62,13 +62,13 @@ function Home() {
                     </div>
                 </div>
 
-                <div className="min-w-0">
+                <div className="min-w-0 flex flex-col h-full">
                     <img
                         src={products[1]?.images?.[0]}
                         alt={products[1]?.name}
                         className="w-full h-36 sm:h-52 md:h-64 lg:h-70 object-contain"
                     />
-                    <div className="mt-2 sm:mt-4 md:translate-x-5 lg:translate-x-15">
+                    <div className="mt-auto sm:mt-4 md:translate-x-5 lg:translate-x-15">
                         <h3 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-4">
                             {products[1]?.name}
                         </h3>
@@ -116,7 +116,7 @@ function Home() {
                         <img
                             src={newestProduct.images?.[1]}
                             alt={newestProduct.name}
-                            className="w-full h-64 sm:h-80 md:h-full object-cover md:-translate-y-5 lg:-translate-y-15"
+                            className="w-full h-fit sm:h-80 md:h-full object-cover md:-translate-y-5 lg:-translate-y-15"
                         />
                     </div>
 
@@ -127,7 +127,7 @@ function Home() {
                         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold my-5">
                             {newestProduct.name}
                         </h2>
-                        <button className="mt-5 relative z-10">
+                        <button className="sm:mt-5 relative z-10">
                             <Link
                                 to="/shop"
                                 className="border text-lg sm:text-xl px-6 sm:px-10 py-3 inline-block"

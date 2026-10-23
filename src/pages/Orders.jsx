@@ -128,9 +128,10 @@ export default function Orders() {
                 (order) => order.orderStatus === selectedStatus
             );
 
+    if (!user) return <Loader message="Login to see orders" />
+
     if (loading) return <Loader />;
 
-    if (!user) return <Loader message="Login to see orders" />
 
     if (error) {
         return (
@@ -148,7 +149,7 @@ export default function Orders() {
     }
 
     return (
-        <main className="min-h-screen bg-gray-50 px-4 py-10 sm:px-6 lg:px-8">
+        <main className="min-h-screen bg-gray-50 px-4 py-10 mt-10 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-5xl">
                 <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
                     <div>

@@ -6,8 +6,6 @@ import {
   ShoppingBag,
   Users,
   Layers,
-  Settings,
-  Armchair,
 } from "lucide-react";
 
 const menuItems = [
@@ -38,7 +36,7 @@ const menuItems = [
   },
 ];
 
-const AdminSidebar = () => {
+const AdminSidebar = ({ onNavigate }) => {
   const location = useLocation();
 
   const isActive = (path) => {
@@ -53,7 +51,7 @@ const AdminSidebar = () => {
   };
 
   return (
-    <aside className="flex h-screen w-64 flex-col bg-[#151b20] text-white">
+    <aside className="flex flex-col">
       <Link
         to="/admin"
         className="flex items-center gap-3 px-6 py-7"
@@ -80,6 +78,7 @@ const AdminSidebar = () => {
             <Link
               key={item.path}
               to={item.path}
+              onClick={onNavigate}
               className={`flex items-center gap-4 rounded-lg px-4 py-3 transition-colors ${
                 active
                   ? "bg-[#c89b3c] text-white"
